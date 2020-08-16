@@ -1,0 +1,41 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://management.azure.com/subscriptions/54d678fc-5615-450c-af29-57f8f974f2c2/resourceGroups/datafactory-rg/providers/Microsoft.Sql/servers/mydatafactorysql/databases/mysqldatabase?api-version=2017-10-01-preview",
+					"method": "PUT",
+					"headers": {
+						"content-type": "application/json"
+					},
+					"body": {
+						"sku": {
+							"name": "S0",
+							"tier": "standard"
+						},
+						"location": "West Europe"
+					},
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://management.azure.com/"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-08-13T12:07:18Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
